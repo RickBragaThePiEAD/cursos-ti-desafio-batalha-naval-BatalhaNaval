@@ -138,7 +138,78 @@ int main() {
     // 0 0 1 0 0
     // 1 1 1 1 1
     // 0 0 1 0 0
-
+    int cone[3][5] = {
+        {0, 0, 1, 0, 0},
+        {0, 1, 1, 1, 0},
+        {1, 1, 1, 1, 1}     
+    };
+    int octaedro[3][5] = {
+        {0, 0, 2, 0, 0},
+        {0, 2, 2, 2, 0},
+        {0, 0, 2, 0, 0}     
+    };
+    int cruz[3][5] = {
+        {0, 0, 3, 0, 0},
+        {3, 3, 3, 3, 3},
+        {0, 0, 3, 0, 0}     
+    };
+    printf("\n@@@ NÍVEL MESTRE   @@@\n");
+    printf("Tabuleiro Vazio:\n");
+    // Exibir o cabeçalho da coluna
+    printf("\t"); // Espaço para os índices das colunas
+    for (j = 0; j < COLUNAS; j++) {
+        printf("%d \t", j); // Exibe os índices das colunas
+    }
+    printf("\n\t_________________________________________________________________________\n"); // Pular uma linha após o cabeçalho
+    // Preencher o tabuleiro com zeros e exibir os índices das linhas
+    for (i = 0; i < LINHAS; i++) {
+        printf("%d | \t", i); // Exibe o índice da linha
+        for (j = 0; j < COLUNAS; j++) {
+            tabuleiro[i][j] = 0; // Inicializa o tabuleiro com zeros
+            printf("%d \t", tabuleiro[i][j]); // Exibe o valor do tabuleiro
+        }
+        printf("\n"); // Pular uma linha após cada linha do tabuleiro
+    }
+    // Preenchendo o tabuleiro com cone
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 5; j++) {
+            if (cone[i][j] == 1) {
+                tabuleiro[i + 0][j + 0] = 1; // Ajusta a posição do cone no tabuleiro {0,0}
+            }
+        }
+    }
+    //Preenchendo o tabuleiro com octaedro
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 5; j++) {
+            if (octaedro[i][j] == 2) {
+                tabuleiro[i + 3][j + 5] = 2; // Ajusta a posição do octaedro no tabuleiro {3,0}
+            }
+        }
+    }
+    // Preenchendo o tabuleiro com cruz
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 5; j++) {
+            if (cruz[i][j] == 3) {
+                tabuleiro[i + 6][j + 2] = 3; // Ajusta a posição da cruz no tabuleiro {6,2}
+            }
+        }
+    }
+    // Exibir o tabuleiro com as habilidades
+    printf("\nTabuleiro Preenchido:\n");
+    // Exibir o cabeçalho da coluna
+    printf("\t"); // Espaço para os índices das colunas
+    for (j = 0; j < COLUNAS; j++) {
+        printf("%d \t", j); // Exibe os índices das colunas
+    }
+    // Pular uma linha após o cabeçalho
+    printf("\n\t_________________________________________________________________________\n");
+        for (i = 0; i < LINHAS; i++) {
+        printf("%d | \t", i); // Exibe o índice da linha
+        for (j = 0; j < COLUNAS; j++) {
+            printf("%d \t", tabuleiro[i][j]); // Exibe o valor do tabuleiro
+        }
+        printf("\n"); // Pular uma linha após cada linha do tabuleiro
+    }
     printf("\n\n");
     return 0;
 }
